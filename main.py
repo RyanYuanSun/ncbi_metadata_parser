@@ -12,7 +12,7 @@ def worker(accession, data, data_failed):
     attributes = []
     bogus_values = ['missing', 'n/a', 'not provided', 'not provided; submitted under MIGS 2.1', '', 'NA', '/', 'N/A',
                     'missed', 'not located', 'Not Applicable', 'Missing', 'unknown', 'Unknown', 'not collected',
-                    'Not applicable']
+                    'Not applicable', 'not applicable']
     detail_request_url = 'https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/' + accession + '/dataset_report?filters.assembly_version=all_assemblies&page_size=1000'
     try:
         result_detail = requests.get(url=detail_request_url)
