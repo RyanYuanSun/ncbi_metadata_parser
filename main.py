@@ -103,8 +103,8 @@ def sub_process(job, data, data_failed):
 
 
 def collect_links(taxon_id, accession_list):
-    request_payload = '{"filters":{"has_annotation":true,"assembly_source":"refseq","exclude_paired_reports":true,"assembly_version":"current"},"page_size":1000,"page_token":null,"returned_content":"COMPLETE","taxons":["' + str(
-        taxon_id) + '"]}'
+    # request_payload = '{"filters":{"has_annotation":true,"assembly_source":"refseq","exclude_paired_reports":true,"assembly_version":"current"},"page_size":1000,"page_token":null,"returned_content":"COMPLETE","taxons":["' + str(taxon_id) + '"]}'
+    request_payload = '{"page_size":1000,"page_token":null,"returned_content":"COMPLETE","taxons":["' + str(taxon_id) + '"]}'
     result_page = requests.post("https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/dataset_report",
                                 data=request_payload)
     for i in result_page.json()['reports']:
@@ -148,8 +148,8 @@ def progress_bar(done, total, i):
 
 
 def check_taxon(taxon_id):
-    request_payload = '{"filters":{"has_annotation":true,"assembly_source":"refseq","exclude_paired_reports":true,"assembly_version":"current"},"page_size":1000,"page_token":null,"returned_content":"COMPLETE","taxons":["' + str(
-        taxon_id) + '"]}'
+    # request_payload = '{"filters":{"has_annotation":true,"assembly_source":"refseq","exclude_paired_reports":true,"assembly_version":"current"},"page_size":1000,"page_token":null,"returned_content":"COMPLETE","taxons":["' + str(taxon_id) + '"]}'
+    request_payload = '{"page_size":1000,"page_token":null,"returned_content":"COMPLETE","taxons":["' + str(taxon_id) + '"]}'
     try:
         result_page = requests.post("https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/dataset_report",
                                     data=request_payload)
